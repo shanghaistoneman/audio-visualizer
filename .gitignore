@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# PyInstaller 构建产物（exe 含 GPLv3 的 ffmpeg，不随仓库分发；本地可按需自行打包）
+build/
+dist/
+*.exe
+*.manifest
+
+# 运行时输出
+output/
+频谱视频输出/
+*.mp4
+*.mov
+*.webm
+*.mp3
+*.wav
+*.flac
+*.m4a
+
+# Android 构建产物
+AndroidVisualizer/.gradle/
+AndroidVisualizer/local.properties
+AndroidVisualizer/build/
+AndroidVisualizer/app/build/
+AndroidVisualizer/.idea/
+AndroidVisualizer/*.iml
+AndroidVisualizer/captures/
+AndroidVisualizer/.externalNativeBuild/
+AndroidVisualizer/extra/
+
+# IDE / 系统
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# WorkBuddy 工作数据
+.workbuddy/

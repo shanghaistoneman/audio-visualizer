@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="音频频谱视频生成器"
+            android:textColor="@color/text"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="选择音乐，后台生成适合 MV 的频谱动画视频"
+            android:textColor="@color/text_sub"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:paddingBottom="14dp" />
+
+        <!-- 示例预览 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="示例预览（随参数自动刷新）"
+            android:textColor="@color/accent"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/bg_card">
+
+            <ImageView
+                android:id="@+id/previewImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                tools:ignore="ContentDescription" />
+
+            <ProgressBar
+                android:id="@+id/previewLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <!-- 音频选择 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="centerVertical">
+
+            <Button
+                android:id="@+id/btnPickAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择音频文件"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/audioName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="未选择文件"
+                android:textColor="@color/text_sub"
+                android:textSize="13sp"
+                android:maxLines="2"
+                android:ellipsize="middle" />
+        </LinearLayout>
+
+        <!-- 参数区 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="@color/bg_card"
+            android:padding="12dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="视觉效果" android:textColor="@color/text" android:textSize="14sp" />
+            <Spinner android:id="@+id/spinMode" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:entries="@array/mode_entries" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="配色" android:textColor="@color/text" android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+            <Spinner android:id="@+id/spinTheme" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:entries="@array/theme_entries" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="分辨率" android:textColor="@color/text" android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+            <Spinner android:id="@+id/spinSize" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:entries="@array/size_entries" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginTop="8dp">
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="帧率" android:textColor="@color/text" android:textSize="14sp" />
+                    <Spinner android:id="@+id/spinFps" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:entries="@array/fps_entries" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical"
+                    android:layout_marginStart="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="频谱柱数" android:textColor="@color/text" android:textSize="14sp" />
+                    <Spinner android:id="@+id/spinBars" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:entries="@array/bars_entries" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="发光强度" android:textColor="@color/text" android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+            <Spinner android:id="@+id/spinGlow" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:entries="@array/glow_entries" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="输出格式" android:textColor="@color/text" android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+            <Spinner android:id="@+id/spinFormat" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:entries="@array/format_entries" />
+
+            <CheckBox
+                android:id="@+id/checkAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="嵌入原音频"
+                android:textColor="@color/text"
+                android:checked="true"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="提示：MP4 格式本身不支持透明背景。需要透明请选“MP4 + 黑白遮罩”，在剪辑软件中用亮度键抠像。"
+                android:textColor="@color/warn"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <!-- 操作区 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp">
+
+            <Button
+                android:id="@+id/btnGenerate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="生成视频"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取消"
+                android:textAllCaps="false"
+                android:enabled="false"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:max="100"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="就绪"
+            android:textColor="@color/text_sub"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp" />
+
+        <Button
+            android:id="@+id/btnOpenOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开输出文件夹"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="输出目录：Android/data/com.example.audiovisualizer/files/频谱视频输出"
+            android:textColor="@color/text_sub"
+            android:textSize="11sp"
+            android:layout_marginTop="6dp"
+            android:paddingBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">频谱视频生成器</string>
+
+    <string-array name="mode_entries">
+        <item>🌈 底部频谱条</item>
+        <item>✨ 中央镜像扩散</item>
+        <item>🔥 环形频谱</item>
+        <item>💫 双环旋转</item>
+        <item>🌀 螺旋星轨</item>
+        <item>〰️ 波形脉冲</item>
+        <item>🕳️ 能量隧道</item>
+        <item>🎆 粒子爆破</item>
+    </string-array>
+    <string-array name="mode_values">
+        <item>bottom</item>
+        <item>mirror</item>
+        <item>circle</item>
+        <item>dual_ring</item>
+        <item>spiral</item>
+        <item>waveform</item>
+        <item>tunnel</item>
+        <item>particles</item>
+    </string-array>
+
+    <string-array name="theme_entries">
+        <item>霓虹青紫（默认）</item>
+        <item>全彩循环</item>
+        <item>烈焰金红</item>
+        <item>极光青绿</item>
+        <item>冰蓝纯白</item>
+        <item>纯白</item>
+        <item>紫蓝渐变（左紫右蓝）</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>neon</item>
+        <item>rainbow</item>
+        <item>fire</item>
+        <item>aurora</item>
+        <item>ice</item>
+        <item>mono</item>
+        <item>purple_blue</item>
+    </string-array>
+
+    <string-array name="size_entries">
+        <item>1080 × 1920（竖屏高清·慢）</item>
+        <item>720 × 1280（竖屏流畅·推荐）</item>
+        <item>1080 × 1080（方形）</item>
+        <item>640 × 640（快速预览）</item>
+        <item>1920 × 1080（横屏高清·极慢）</item>
+        <item>1280 × 720（横屏流畅）</item>
+    </string-array>
+    <string-array name="size_values">
+        <item>1080x1920</item>
+        <item>720x1280</item>
+        <item>1080x1080</item>
+        <item>640x640</item>
+        <item>1920x1080</item>
+        <item>1280x720</item>
+    </string-array>
+
+    <string-array name="fps_entries">
+        <item>24 帧（文件小、快）</item>
+        <item>30 帧（推荐）</item>
+        <item>60 帧（文件大、慢）</item>
+    </string-array>
+    <string-array name="fps_values">
+        <item>24</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+
+    <string-array name="bars_entries">
+        <item>32（略小、略快）</item>
+        <item>64（小、快）</item>
+        <item>96（中等）</item>
+        <item>128（略大、略慢）</item>
+        <item>192（大、慢）</item>
+    </string-array>
+    <string-array name="bars_values">
+        <item>32</item>
+        <item>64</item>
+        <item>96</item>
+        <item>128</item>
+        <item>192</item>
+    </string-array>
+
+    <string-array name="glow_entries">
+        <item>0（无辉光·最快）</item>
+        <item>0.5（轻微）</item>
+        <item>1.0（中等）</item>
+        <item>1.5（较强·推荐）</item>
+        <item>2.0（最强·最慢）</item>
+    </string-array>
+    <string-array name="glow_values">
+        <item>0.0</item>
+        <item>0.5</item>
+        <item>1.0</item>
+        <item>1.5</item>
+        <item>2.0</item>
+    </string-array>
+
+    <string-array name="format_entries">
+        <item>MP4 · 黑幕背景（推荐，通用）</item>
+        <item>MP4 · 绿幕背景（可抠像）</item>
+        <item>MP4 + 黑白遮罩（两段，可还原透明）</item>
+    </string-array>
+    <string-array name="format_values">
+        <item>mp4-black</item>
+        <item>mp4-green</item>
+        <item>mp4-matte</item>
+    </string-array>
+</resources>
