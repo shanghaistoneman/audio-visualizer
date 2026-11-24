@@ -72,7 +72,7 @@ class App:
         self._build_right(right)
         for var in (self.mode_var, self.theme_var, self.size_var, self.fps_var,
                     self.bars_var, self.glow_var, self.fmt_var, self.audio_var,
-                    self.audio_var2):
+                    self.audio_var2, self.workers_var):
             var.trace_add("write", lambda *_: self.on_params_changed())
         self.update_estimate()
         self.root.after(80, self.pump)

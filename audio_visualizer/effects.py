@@ -373,11 +373,11 @@ class Renderer:
             d.line(seg, fill=self.color(i / count, v, (90 + 165 * v) * 0.42, x=0.5 + 0.5 * ca),
                    width=max(1, int(width * 0.8)))
         r = base * (0.87 + 0.07 * f.pulse)
-        ring_a = 130 + 100 * f.bass
-        # 圆环本身由渐变细环叠加构成，边缘平滑淡出（不再依赖硬边描边 + 背后辉光）
+        ring_a = 22 + 42 * f.bass
+        # 圆环压低亮度，仅作为径向短线的低调结构底纹，避免比短线还亮而刺眼
         self._soft_ring(
             cx, cy, r, self.color(0.5, f.bass, ring_a, x=0.5),
-            width=max(3, int(self.s * 0.006)),
+            width=max(2, int(self.s * 0.0045)),
         )
 
     def _draw_dual_ring(self, d: ImageDraw.ImageDraw, f: FrameFeatures) -> None:
@@ -387,11 +387,12 @@ class Renderer:
         count = 240 if self.s >= 800 else 160
         spin = self._time
         width = max(1, int(self.s * 0.0022))
-        # 两个渐变基准圆环：多层同心细环形成径向渐变边缘
+        # 两个渐变基准圆环：大幅压低亮度，仅作为径向短线的低调结构底纹，
+        # 避免圆环比短线还亮造成反差刺眼（alpha 约 30-45，远低于短线的 45-107）。
         for r, p, a in ((r1, 0.25, 0.35 + 0.25 * f.bass), (r2, 0.75, 0.30 + 0.25 * f.mid)):
             self._soft_ring(
-                cx, cy, r, self.color(p, a, 120 + 90 * a),
-                width=max(3, int(self.s * 0.006)),
+                cx, cy, r, self.color(p, a, 20 + 42 * a),
+                width=max(2, int(self.s * 0.0045)),
             )
         for i in range(count):
             v = float(f.bars[int(i / count * n)])
@@ -456,15 +457,17 @@ class Renderer:
             (j / (len(wave) - 1) * self.w, cy + float(wave[j]) * amp)
             for j in range(len(wave))
         ]
+        # 波形曲线压低亮度：主曲线 alpha 240->70、镜像 110->45，
+        # 让背景频谱竖条成为主体，避免曲线过亮盖过频谱、显得刺眼。
         self._glow_polyline(
             d, pts,
-            self.color(0.65, max(0.4, f.level), 240, x=0.65),
-            width=max(2, int(self.s * 0.0045)), soft_scale=0.9, main_scale=0.6,
+            self.color(0.65, max(0.4, f.level), 70, x=0.65),
+            width=max(2, int(self.s * 0.0035)), soft_scale=0.9, main_scale=0.6,
         )
         self._glow_polyline(
             d, [(x, self.h - y) for x, y in pts],
-            self.color(0.2, f.level, 110, x=0.2),
-            width=max(1, int(self.s * 0.002)), soft_scale=0.6, main_scale=0.75,
+            self.color(0.2, f.level, 45, x=0.2),
+            width=max(1, int(self.s * 0.0018)), soft_scale=0.6, main_scale=0.75,
         )
 
     def _draw_tunnel(self, d: ImageDraw.ImageDraw, f: FrameFeatures) -> None:
